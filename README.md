@@ -38,7 +38,7 @@
 - cp -r $STUDENT_FILE/walkthroughs/devint/module01/wt1-1_starter/check-in-papi ./
 - cd $PROJECT_HOME/check-in-papi
 - mvn clean verify -U -Dencrypt.key=secure12345 -DskipTests=true
--
+- -M-Dencrypt.key=secure12345 -M-Danypoint.platform.gatekeeper=disabled
 - curl -ik -X PUT -H "Content-Type: application/json" -d "{\"lastName\" :\"Smith\",\"numBags\":2}" https://localhost:8081/api/v1/tickets/PNR123/checkin
 - curl -ik -X PUT -H "Content-Type: application/json" -d "{\"payerID\": \"STJ8222K092ST\", \"paymentID\": \"PAY-1AKD7482FAB9STATKO\"}" https://localhost:8081/api/v1/tickets/N123/paymentApproval
 - curl -ik https://localhost:8081/alive

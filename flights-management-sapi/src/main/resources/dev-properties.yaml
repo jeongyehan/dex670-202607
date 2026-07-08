@@ -12,6 +12,8 @@
 # Autodiscovery API ID in API Manager in this environment
 api:
   id: "15620138"
+  callback:
+    base: "TBU"
     
 tls.keystore:
   type:  "pkcs12"

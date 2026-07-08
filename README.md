@@ -61,3 +61,15 @@
 - curl -ik -X PUT -H "Content-Type: application/json" -d "{\"lastName\":\"Mule\",\"numBags\":2}" https://localhost:8081/api/v1/tickets/PNR123/checkin
 - curl -ik https://localhost:8081/alive
 - curl -ik https://localhost:8081/ready
+- cd $PROJECT_HOME
+- mvn install:install-file -Dfile=bom/pom.xml -DpomFile=bom/pom.xml
+- mvn install:install-file -Dfile=parent-pom/pom.xml -DpomFile=parent-pom/pom.xml
+- cd $PROJECT_HOME/apps-commons
+- mvn clean install
+- cd $PROJECT_HOME/bom
+- mvn deploy -f pom.xml -Pdeploy-to-exchange-v3
+- cd $PROJECT_HOME/parent-pom
+- mvn deploy -f pom.xml -Pdeploy-to-exchange-v3
+- cd $PROJECT_HOME/apps-commons
+- mvn deploy -f pom.xml
+

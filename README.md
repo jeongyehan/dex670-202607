@@ -53,3 +53,11 @@
 - curl -ik -X POST -H "Content-Type: application/json" -d "{\"amount\":12.34, \"description\": \"something\"}" https://localhost:8081/api/v1/payments
 - curl -ik -X PUT -H "Content-Type: application/json" -d "{\"payerID\":\"STJ8222K092ST\"}" https://localhost:8081/api/v1/payments/PAY-1B56960729604235TKQQIYVY/approval
 - curl -i -X POST -H "Accept: application/json" -H "Accept-Language:en_US" -u "APP-80ANYAIRLINE8184JT3:1929FHDUAL8392K9ABKSNMM" -d "grant_type=client_credentials" https://training-paypal-fake-api-sandbox-mjf1rw.5sc6y6-1.usa-e2.cloudhub.io/v1/oauth2/token
+- cd $PROJECT_HOME
+- cp -r $STUDENT_FILE/walkthroughs/devint/module01/wt1-5_starter/flights-management-sapi $PROJECT_HOME/.
+- cd $PROJECT_HOME/flights-management-sapi
+- mvn clean verify -U -Dencrypt.key=secure12345 -DskipTests=true
+- -M-Dencrypt.key=secure12345 -M-Danypoint.platform.gatekeeper=disabled
+- curl -ik -X PUT -H "Content-Type: application/json" -d "{\"lastName\":\"Mule\",\"numBags\":2}" https://localhost:8081/api/v1/tickets/PNR123/checkin
+- curl -ik https://localhost:8081/alive
+- curl -ik https://localhost:8081/ready

@@ -83,4 +83,5 @@
 - curl -ik -H "Content-Type:text/xml" -d "<CancellationNotification><PNR>PNR123</PNR><PassengerLastName>Mule</PassengerLastName></CancellationNotification>" https://localhost:8081/api/cancelFlight
 - curl -ik -H "Content-Type:text/xml" -d "invalid content type" https://localhost:8081/api/cancelFlight
 - curl -ik -H "Content-Type:text/xml" -d "<CancellationNotification><PNR1>PNR123</PNR1><PassengerLastName2>Mule</PassengerLastName2></CancellationNotification>" https://localhost:8081/api/cancelFlight
+- curl -ik -H "Content-Type:text/xml" -d "<CancellationNotification><PNR>PNR123</PNR><PassengerLastName>Mule</PassengerLastName></CancellationNotification>" https://localhost:8081/api/cancelFlight
 

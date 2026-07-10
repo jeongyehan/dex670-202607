@@ -82,7 +82,7 @@ var paypalReturn = payload['2'].payload
 	      <raise-error type="APP:LASTNAME_MISMATCH" doc:name="APP:LASTNAME_MISMATCH"/>
 	    </when>
 	  </choice>
-	  <flow-ref name="get-passenger-data-by-passport" doc:name="get-passenger-data-by-passport"/>
+	  <flow-ref name="get-passenger-data-by-passport" doc:name="get-passenger-data-by-passport" target="passenger"/>
 	  <choice>
 	    <when expression="#[not vars.passenger.lastName == vars.checkIn.lastName]">
 	      <raise-error type="APP:LASTNAME_MISMATCH" doc:name="APP:LASTNAME_MISMATCH"/>
@@ -118,13 +118,15 @@ var paypalReturn = payload['2'].payload
 	  </error-handler>
 	</flow>
 	<flow name="get-passenger-data-by-passport">
-	  <http:request target="passenger" config-ref="passengerDataSapiConfig" method="GET" path="/passengers" doc:name="Passenger API Get Passenger">
+		<ee:cache doc:name="Cache" doc:id="ec69a85f-10b8-491b-b13d-d2d8fe63467f" cachingStrategy-ref="passengerCachingStrategy">
+			<http:request config-ref="passengerDataSapiConfig" method="GET" path="/passengers" doc:name="Passenger API Get Passenger">
 	    <http:query-params><![CDATA[#[output application/java
 	---
 	{
 	    "passportNo" : vars.ticket.ticketHolderPassPortNo
 	}]]]></http:query-params>
 	  </http:request>
+		</ee:cache>
 	</flow>
   <flow name="check-in-flights-management">
 	  <ee:transform>

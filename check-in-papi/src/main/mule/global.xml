@@ -49,5 +49,8 @@ http://www.mulesoft.org/schema/mule/os http://www.mulesoft.org/schema/mule/os/cu
 	  </http:request-connection>
 	</http:request-config>
 	<os:object-store name="pnrObjectStore" doc:name="Object store" doc:id="13b52912-f88d-4469-8b55-3c5cce804257" />
+	<ee:object-store-caching-strategy name="passengerCachingStrategy" keyGenerationExpression="#[vars.ticket.ticketHolderPassPortNo]">
+	  <os:private-object-store alias="passengerObjectStore" persistent="true" maxEntries="10000" entryTtl="30" entryTtlUnit="DAYS" expirationInterval="1" expirationIntervalUnit="DAYS" />
+	</ee:object-store-caching-strategy>
 </mule>
 

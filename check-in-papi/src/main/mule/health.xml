@@ -10,11 +10,12 @@
   a copy of which has been included with this distribution in the LICENSE.txt file.
   #L%
   -->
-<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:core="http://www.mulesoft.org/schema/mule/core" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="  http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd   http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd  ">
+<mule xmlns:resilience="http://www.mulesoft.org/schema/mule/resilience" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:core="http://www.mulesoft.org/schema/mule/core" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="  http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd   http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd  
+http://www.mulesoft.org/schema/mule/resilience http://www.mulesoft.org/schema/mule/resilience/current/mule-resilience.xsd">
   <import file="health-common.xml" doc:name="Import health-common.xml"/>
   <sub-flow name="check-all-dependencies-are-alive">
-		<http:request method="GET" url="https://tngaa-flights-management-sapi-dev-9yj2rh.rajrd4-2.usa-e1.cloudhub.io/alive" followRedirects="true" doc:name="Flights Management SAPI" />
-	  <http:request method="GET" url="https://tngaa-passenger-data-sapi-dev-9yj2rh.rajrd4-2.usa-e1.cloudhub.io/alive" followRedirects="true" doc:name="Passenger Data SAPI" />
-	  <http:request method="GET" url="https://tngaa-paypal-sapi-dev-9yj2rh.rajrd4-2.usa-e1.cloudhub.io/alive" followRedirects="true" doc:name="Paypal SAPI" />
+		<resilience:retry-http doc:name="Retry http" doc:id="89acb6c5-32cd-4fb5-8929-96db84e99c87" url="https://tngaa-flights-management-sapi-dev-9yj2rh.rajrd4-2.usa-e1.cloudhub.io/alive"/>
+		<resilience:retry-http doc:name="Retry http" doc:id="25cf15f6-ca74-40ce-8ff2-cf7e31a46475" url="https://tngaa-passenger-data-sapi-dev-9yj2rh.rajrd4-2.usa-e1.cloudhub.io/alive"/>
+		<resilience:retry-http doc:name="Retry http" doc:id="ed55cd62-1097-4554-85aa-f826efa4def2" url="https://tngaa-paypal-sapi-dev-9yj2rh.rajrd4-2.usa-e1.cloudhub.io/alive"/>
 	</sub-flow>
 </mule>

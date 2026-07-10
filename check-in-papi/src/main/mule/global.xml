@@ -27,7 +27,7 @@
   <apikit:config name="apiConfig" api="${api.spec}" outboundHeadersMapName="outboundHeaders" httpStatusVarName="httpStatus" doc:name="APIKit Config"/>
   <api-gateway:autodiscovery apiId="${api.id}" flowRef="api-main" doc:name="API Autodiscovery"/>
   <http:request-config name="flightsManagementSapiConfig" basePath="/api/v1">
-	  <http:request-connection host="tngaa-flights-management-sapi-dev-9yj2rh.rajrd4-2.usa-e1.cloudhub.io" protocol="HTTPS">
+	  <http:request-connection host="aatngaa-flights-management-sapi-dev-9yj2rh.rajrd4-2.usa-e1.cloudhub.io" protocol="HTTPS">
 	    <http:authentication>
 	      <http:basic-authentication username="e66105d66e8b4520b091127620221cce" password="A1c099D51C50420b84641D71b229EBac" />
 	    </http:authentication>

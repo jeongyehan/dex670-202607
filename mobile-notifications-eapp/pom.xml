@@ -39,6 +39,11 @@
 		</plugins>
 	</build>
 	<dependencies>
+	  <dependency>
+		  <groupId>org.mule.modules</groupId>
+		  <artifactId>mule-tracing-module</artifactId>
+		  <classifier>mule-plugin</classifier>
+		</dependency>
 		<dependency>
 			<groupId>org.mule.connectors</groupId>
 			<artifactId>mule-email-connector</artifactId>

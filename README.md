@@ -93,3 +93,5 @@
 - mvn -B -f bom/pom.xml archetype:generate -DarchetypeGroupId=org.mule.extensions -DarchetypeArtifactId=mule-extensions-xml-archetype -DarchetypeVersion=1.2.0 -DgroupId=1adb85d2-035b-4e2c-a931-420f7396c267 -DartifactId=resilience-mule-extension -DmuleConnectorName=resilience-mule-extension -DextensionName=resilience -Dpackage=. -DoutputDirectory=../
 - mvn clean install -DskipTests=true
 - mvn deploy -Pdeploy-to-exchange-v3 -DskipTests=true
+- mvn -B -f bom/pom.xml archetype:generate -DarchetypeGroupId=org.mule.tools -DarchetypeArtifactId=api-gateway-custom-policy-archetype -DarchetypeVersion=1.2.0 -DgroupId=1adb85d2-035b-4e2c-a931-420f7396c267 -DartifactId=custom-message-logging-policy -Dversion=1.0.0-SNAPSHOT -Dpackage=mule-policy -DpolicyDescription="Policy for logging messages" -DpolicyName="Custom Message Logging" -DoutputDirectory=../
+- mvn clean deploy
